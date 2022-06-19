@@ -1,14 +1,25 @@
 .App {
   text-align: center;
-  display: grid;
+  display: flex;
   justify-content: center;
-  width: 100%;
+
 
 }
 .App2{
  justify-content: center;
  text-align: center;
+ max-width: fit-content;
+ display: grid;
+ width: 27%;
 
+
+}
+@media only screen and (max-width: 500px) {
+  .App2 {
+    width: 5vw;
+    font-size: small;
+  }
+  
 }
 
 input:checked {
