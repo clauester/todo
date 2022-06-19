@@ -27,6 +27,15 @@ function App() {
     progress: undefined,
   });
 
+  const alertDeleted = () =>  toast.warning('Task deleted!', {
+    position: "top-right",
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
   const alertSuccess = () => toast.success('Task added!', {
     position: "top-right",
     autoClose: 4000,
@@ -46,12 +55,14 @@ function App() {
     const copy = [...tasks]
     copy.splice(i, 1)
     setTasks(copy)
+    alertDeleted()
   }
 
   const deleteAll = () => {
     let copy = [...tasks]
     const a = copy.filter(value => value.state === false)
     setTasks(a)
+    alertDeleted()
   }
 
   function handleSubmit(e) {
@@ -92,9 +103,9 @@ function App() {
               <form onSubmit={handleSubmit} style={{ width: "100%" }}>
 
                 <OutlinedInput onChange={(event) => setText(event.target.value)}
-                  placeholder="Add a Task" sx={{ width: '65%' }} value={text} />
+                  placeholder="Add a Task" sx={{ width: '65%', height: 50}} value={text} />
 
-                <Button type="submit" variant="contained" size="large" sx={{ width: '30%', ml: 1 }} >
+                <Button type="submit" variant="contained" sx={{ width: '30%', ml: 1, height: 50 }} >
                   Add
                 </Button>
 
